@@ -71,6 +71,12 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'devise'
+gem 'bootstrap', '~> 5.0'
+gem 'simple_form'
+
 group :production do
   gem 'pg'
 end
+
+gem "devise"
