@@ -11,5 +11,9 @@ class User < ApplicationRecord
     false
   end
 
+  def will_save_change_to_email?
+    false
+  end
+
   validates :employee_number, presence: true, uniqueness: true
 end
