@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_31_032014) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_31_045744) do
+  create_table "homes", charset: "utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
     t.string "employee_number", null: false
