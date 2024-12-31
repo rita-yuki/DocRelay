@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+</head>
+<body>
+  <div class="container">
+    <h1>ようこそ、<%= current_user.name %>さん</h1>
+    <div class="menu">
+      <div class="menu-item">
+        <%= link_to "書類登録", new_document_path, class: "btn btn-primary" %>
+      </div>
+      <div class="menu-item">
+        <%= link_to "一覧表示", documents_path, class: "btn btn-secondary" %>
+      </div>
+      <div class="menu-item">
+        <%= link_to "ユーザー編集", edit_user_path(current_user), class: "btn btn-success" %>
+      </div>
+    </div>
+    <div class="image">
+      <img src="/assets/dashboard.png" alt="Dashboard" />
+    </div>
+  </div>
+</body>
+</html>
