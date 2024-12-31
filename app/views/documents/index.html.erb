@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>書類一覧</title>
+  <%= stylesheet_link_tag 'documents', media: 'all' %>
+</head>
+<body>
+  <h1>書類一覧</h1>
+  <table class="document-table">
+    <thead>
+      <tr>
+        <th>処理開始可能日</th>
+        <th>処理期日</th>
+        <th>顧客名</th>
+        <th>書類名</th>
+        <th>件数</th>
+        <th>進捗状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @documents.each do |document| %>
+        <tr>
+          <td class="<%= 'highlight-green' if document.start_date <= Date.today %>">
+            <%= document.start_date %>
+          </td>
+          <td class="<%= 'highlight-red' if document.due_date <= Date.today %>">
+            <%= document.due_date %>
+          </td>
+          <td><%= document.customer_name %></td>
+          <td>
+            <%= document.document_name.name %>
+          </td>
+          <td>
+            <%= document.quantity.value %>
+          </td>
+          <td>
+            <%= select_tag "progress_status_#{document.id}", 
+                options_for_select(ProgressStatus.all.map { |p| [p.status, p.id] }, document.progress_status_id || 1) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>
+</html>

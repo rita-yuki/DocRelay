@@ -49,21 +49,24 @@ https://docs.google.com/spreadsheets/d/1HlieO-kYB4VnnwI9pG3IavFK8WnPykosnW-SXJaR
 
 | カラム名          | データ型 | 制約                           |
 |------------------|----------|-------------------------------|
-| document_id      | integer  | PK                            |
-| category_id      | integer  | null: false, foreign_key: true|
-| quantity         | integer  | null: false                   |
+| id               | integer  | PK                            |
+| start_dates      | date     | null: false                   |
+| due_date         | date     | null: false                   |
 | received_date    | date     | null: false                   |
 | customer_name    | string   | null: false                   |
-| processing_dates | json     | null: false                   |
+| document_name_id | integer  | null: false                   |
+| quantity_id      | integer  | null: false                   |
 | user_id          | integer  | null: false, foreign_key: true|
 | created_at       | datetime |                               |
 | updated_at       | datetime |                               |
 
 ### Association
 - has_many :returns
-- belongs_to :category
+- belongs_to_active_hash :document_name
+- belongs_to_active_hash :quantity
+- belongs_to_active_hash :progress_status
 - belongs_to :user
-- belongs_to :status
+
 
 
 ### Commentsテーブル
@@ -100,14 +103,27 @@ https://docs.google.com/spreadsheets/d/1HlieO-kYB4VnnwI9pG3IavFK8WnPykosnW-SXJaR
 - belongs_to :category
 - belongs_to :user
 
-### Categoriesテーブル
+## DocumentName（ActiveHash）
 
 | カラム名      | データ型  | 制約                           |
-|--------------|------------|--------------------------------|
-| category_id  | integer    | PK                             |
-| category_name| string     | null: false                    |
-| created_at   | datetime   |                                |
-| updated_at   | datetime   |                                |
+|--------------|------------|-------------------------------|
+| id           | integer    | PK                            |
+| name         | string     |                               |
+### Association
+has_many :documents
 
+## Quantity（ActiveHash）
+|カラム名      | データ型  | 制約                             |
+|--------------|------------|-------------------------------|
+| id           | integer    | PK                            |
+| value        | string     |                               |
+### Association
+- has_many :documents
+
+## ProgressStatus（ActiveHash）
+|カラム名      | データ型  | 制約                             |
+|--------------|------------|-------------------------------|
+| id           | integer    | PK                            |
+| status       | string     |                               |
 ### Association
 - has_many :documents

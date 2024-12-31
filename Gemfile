@@ -79,6 +79,6 @@ group :production do
   gem 'pg'
 end
 
-gem "devise"
 gem 'sassc-rails'
 gem 'therubyracer'
+gem 'active_hash'
