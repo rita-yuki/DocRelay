@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :documents
   resources :users, only: [:edit, :update]
 
+  devise_for :users
 end
