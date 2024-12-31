@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DocRelay</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
+<head>
+  <title>DocRelay</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>DocRelay</h1>
+      <div class="user-info">
+        <% if user_signed_in? %>
+          <span>ようこそ、<%= current_user.user_name %>さん</span>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-logout' %>
+        <% else %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-login' %>
+        <% end %>
+      </div>
+    </div>
+  </header>
+  <main>
     <%= yield %>
-  </body>
+  </main>
+</body>
 </html>
