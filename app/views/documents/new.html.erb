@@ -1,0 +1,48 @@
+<h1>書類登録</h1>
+
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% elsif flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<%= form_with model: @document, local: true do |f| %>
+  <div>
+    <%= f.label :received_date, '受領日' %>
+    <%= f.date_field :received_date, value: @document.received_date || Date.today %>
+  </div>
+
+  <div>
+    <%= f.label :start_date, '手続き開始可能日' %>
+    <%= f.date_field :start_date, value: @document.start_date %>
+  </div>
+
+  <div>
+    <%= f.label :due_date, '手続き期日' %>
+    <%= f.date_field :due_date, value: @document.due_date %>
+  </div>
+
+  <div>
+    <%= f.label :customer_name, '顧客名' %>
+    <%= f.text_field :customer_name, value: @document.customer_name %>
+  </div>
+
+  <div>
+    <%= f.label :document_name_id, '書類名' %>
+    <%= f.collection_select :document_name_id, DocumentName.all, :id, :name, prompt: '選択してください' %>
+  </div>
+
+  <div>
+    <%= f.label :quantity_id, '件数' %>
+    <%= f.collection_select :quantity_id, Quantity.all, :id, :value, prompt: '選択してください' %>
+  </div>
+
+  <div>
+    <%= f.submit '続けて登録する', name: 'commit' %>
+    <%= f.submit '登録終了', name: 'commit' %>
+  </div>
+<% end %>
