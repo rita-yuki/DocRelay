@@ -19,8 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_31_172345) do
     t.integer "document_name_id", null: false
     t.integer "quantity_id", null: false
     t.integer "progress_status_id", default: 1, null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "fk_rails_2be0318c46"
   end
 
   create_table "homes", charset: "utf8", force: :cascade do |t|
@@ -40,4 +42,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_31_172345) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "documents", "users"
 end

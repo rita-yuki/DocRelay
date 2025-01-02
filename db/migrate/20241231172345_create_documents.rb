@@ -8,7 +8,10 @@ class CreateDocuments < ActiveRecord::Migration[7.0]
       t.integer :document_name_id, null: false
       t.integer :quantity_id, null: false
       t.integer :progress_status_id, null: false, default: 1
+      t.bigint :user_id, null: false
       t.timestamps
     end
+
+    add_foreign_key :documents, :users
   end
 end
