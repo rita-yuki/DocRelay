@@ -80,3 +80,8 @@ group :production do
 end
 
 gem "devise"
+gem 'sassc-rails'
+gem 'therubyracer'
+gem 'rails-ujs'
+
+
