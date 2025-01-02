@@ -30,6 +30,7 @@ class DocumentsController < ApplicationController
         redirect_to root_path, notice: '書類が登録されました。'
       end
     else
+      Rails.logger.info(@document.errors.full_messages)
       render :new, status: :unprocessable_entity
     end
   end

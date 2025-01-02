@@ -12,15 +12,15 @@ class Document < ApplicationRecord
 
   def start_date_and_due_date_validations
     if start_date.present? && start_date < received_date
-      errors.add(:start_date, 'の日付を確認してください。')
+      errors.add(:start_date, '（手続き開始可能日）を確認してください。')
     end
 
     if due_date.present? && due_date < start_date
-      errors.add(:due_date, 'の日付を確認してください。')
+      errors.add(:due_date, '（手続き期日）を確認してください。')
     end
 
     if due_date.present? && due_date < received_date
-      errors.add(:due_date, 'の日付を確認してください。')
+      errors.add(:due_date, '（手続き期日）を確認してください。')
     end
   end
 end
