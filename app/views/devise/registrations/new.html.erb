@@ -12,6 +12,11 @@
   </div>
 
   <div class="field">
+  <%= f.label :role_id, "担当者区分" %><br />
+  <%= f.select :role_id, Role.all.map { |r| [r.name, r.id] }, {}, class: "form-control" %>
+</div>
+
+  <div class="field">
     <%= f.label :パスワード %><br />
     <%= f.password_field :password %>
   </div>
