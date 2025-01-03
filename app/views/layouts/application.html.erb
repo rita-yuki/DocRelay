@@ -15,7 +15,7 @@
       <div class="user-info">
         <% if user_signed_in? %>
           <span>ようこそ、<%= current_user.user_name %>さん</span>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-logout' %>
+          <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-logout' %>
         <% else %>
           <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-login' %>
         <% end %>

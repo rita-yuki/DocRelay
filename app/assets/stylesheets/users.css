@@ -1,0 +1,13 @@
+.field {
+  margin-bottom: 20px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+}
