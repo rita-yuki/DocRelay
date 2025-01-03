@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_31_172345) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_03_144815) do
   create_table "documents", charset: "utf8", force: :cascade do |t|
     t.date "received_date", null: false
     t.date "start_date", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_31_172345) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
