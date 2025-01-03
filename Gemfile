@@ -81,4 +81,6 @@ end
 
 gem 'sassc-rails'
 gem 'therubyracer'
+gem 'rails-ujs'
 gem 'active_hash'
+
