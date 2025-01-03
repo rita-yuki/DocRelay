@@ -82,4 +82,3 @@ end
 gem 'sassc-rails'
 gem 'therubyracer'
 gem 'rails-ujs'
-
