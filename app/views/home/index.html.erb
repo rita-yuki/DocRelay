@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DocRelay</title>
+  <%= stylesheet_link_tag 'home', media: 'all' %>
+</head>
+<body>
+<div class="container">
+  <div class="menu">
+    <div class="menu-item">
+      <a href="<%= new_document_path %>" class="btn btn-primary">書類登録</a>
+    </div>
+    <div class="menu-item">
+      <a href="<%= documents_path %>" class="btn btn-secondary">一覧表示</a>
+    </div>
+    <div class="menu-item">
+      <a href="<%# edit_user_path(current_user) %>" class="btn btn-success">ユーザー編集</a>
+    </div>
+  </div>
+</div>
