@@ -1,4 +1,4 @@
-class Role < ApplicationRecord
+class Role <  ActiveHash::Base
   self.data = [
     { id: 1, name: '管理者' },
     { id: 2, name: '担当者' }
@@ -6,5 +6,4 @@ class Role < ApplicationRecord
 
   include ActiveHash::Associations
   has_many :users
-end
 end
