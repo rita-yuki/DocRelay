@@ -23,4 +23,8 @@
   </div>
 <% end %>
 
-<%#render "devise/shared/links" %>
+
+<div class="additional-links">
+  <p>
+    <%= link_to "新規登録はこちら", new_registration_path(resource_name), class: "btn btn-secondary" %>
+  </p>
