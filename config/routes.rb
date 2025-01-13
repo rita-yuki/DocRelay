@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :documents, only: [:index, :new, :create]
-  resources :users, only: [:edit, :update]
-  root "home#index" 
+
+  get 'users/edit', to: 'users#edit', as: 'edit_user'
+  patch 'users', to: 'users#update', as: 'user'
+  root "home#index"
 end
