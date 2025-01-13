@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :employee_number, presence: true, uniqueness: true
-  validates :role_id, presence: true, inclusion: { in: -> { Role.pluck(:id) }, message: "は選択肢の中から選んでください。" }
+  validates :role_id, presence: true, inclusion: { in: -> (user) { Role.ids }, message: "は選択肢の中から選んでください。" }
 
   before_update :prevent_employee_number_change
   before_validation :set_default_role, on: :create
