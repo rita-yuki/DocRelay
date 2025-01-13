@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :documents, only: [:index, :new, :create]
 
   get 'users/edit', to: 'users#edit', as: 'edit_user'
