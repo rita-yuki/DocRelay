@@ -45,6 +45,7 @@ https://docs.google.com/spreadsheets/d/1HlieO-kYB4VnnwI9pG3IavFK8WnPykosnW-SXJaR
 - has_many :comments
 - belongs_to_active_hash :role
 
+
 ### Documentsテーブル
 
 | カラム名          | データ型 | 制約                           |
@@ -61,12 +62,12 @@ https://docs.google.com/spreadsheets/d/1HlieO-kYB4VnnwI9pG3IavFK8WnPykosnW-SXJaR
 | updated_at       | datetime |                               |
 
 ### Association
+
 - belongs_to :user
 - belongs_to_active_hash :document_name
 - belongs_to_active_hash :quantity
 - belongs_to_active_hash :progress_status
-
-
+- has_many :comments, dependent: :destroy
 
 
 ### Commentsテーブル
@@ -81,8 +82,10 @@ https://docs.google.com/spreadsheets/d/1HlieO-kYB4VnnwI9pG3IavFK8WnPykosnW-SXJaR
 | updated_at    | datetime   |                                |
 
 ### Association
+
 - belongs_to :user
 - belongs_to :document
+
 
 ## DocumentName（ActiveHash）
 
@@ -92,13 +95,16 @@ https://docs.google.com/spreadsheets/d/1HlieO-kYB4VnnwI9pG3IavFK8WnPykosnW-SXJaR
 | name         | string     |    |
 
 ### Association
+
 has_many :documents
 
 #### データ
+
 - 契約書
 - 同意書
 - 申込書
 - 本人確認資料
+
 
 ## Role（ActiveHash）
 
@@ -106,37 +112,50 @@ has_many :documents
 |--------------|------------|----|
 | id           | integer    | PK |
 | name         | string     |    |
+
 ### Association
+
 has_many :users
+
 #### データ
+
 - 管理者
 - 担当者
 
+
 ## Quantity（ActiveHash）
+
 |カラム名      | データ型  | 制約  |
 |--------------|------------|----|
 | id           | integer    | PK |
 | value        | string     |    |
 
 ### Association
+
 - has_many :documents
 
 #### データ
+
 - 1件
 - 2件
 - 3件
 - 4件
 - 5件
 
+
 ## ProgressStatus（ActiveHash）
+
 |カラム名      | データ型    | 制約 |
 |--------------|------------|-----|
 | id           | integer    | PK  |
 | status       | string     |     |
 
 ### Association
+
 - has_many :documents
+
 #### データ
+
 - 未処理
 - 処理済
 - 不備
