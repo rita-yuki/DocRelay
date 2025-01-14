@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2025_01_13_185646) do
   create_table "comments", charset: "utf8", force: :cascade do |t|
-    t.text "content"
+    t.string "text", null: false
     t.bigint "user_id", null: false
     t.bigint "document_id", null: false
     t.datetime "created_at", null: false
