@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
 
   resources :documents, only: [:index, :new, :create] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
   end
 
   get 'users/edit', to: 'users#edit', as: 'edit_user'
