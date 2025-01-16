@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>コメント一覧</title>
+  <%= stylesheet_link_tag 'comments', media: 'all' %>
+</head>
+<body>
+  <h1>コメント一覧</h1>
+  <h2>書類: <%= @document.document_name.name %></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>コメント</th>
+        <th>投稿日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.content %></td>
+          <td><%= l(comment.created_at, format: :long) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to '戻る', documents_path, class: 'back-link' %>
+</body>
+</html>
