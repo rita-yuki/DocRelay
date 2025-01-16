@@ -15,6 +15,7 @@
         <th>書類名</th>
         <th>件数</th>
         <th>進捗状況</th>
+        <th>コメント有無</th>
       </tr>
     </thead>
     <tbody>
@@ -27,15 +28,16 @@
             <%= document.due_date %>
           </td>
           <td><%= document.customer_name %></td>
-          <td>
-            <%= document.document_name.name %>
-          </td>
-          <td>
-            <%= document.quantity.value %>
-          </td>
+          <td><%= document.document_name.name %></td>
+          <td><%= document.quantity.value %></td>
           <td>
             <%= select_tag "progress_status_#{document.id}", 
                 options_for_select(ProgressStatus.all.map { |p| [p.status, p.id] }, document.progress_status_id || 1) %>
+          </td>
+          <td>
+            <%= link_to "コメント#{document.comments.count}件", 
+                        document_comments_path(document_id: document.id), 
+                        class: 'comment-link' %>
           </td>
         </tr>
       <% end %>

@@ -57,3 +57,16 @@ h1 {
 .details-table td {
   width: 70%; /* 値用の幅を調整 */
 }
+
+#comments-section {
+  margin-top: 20px;
+}
+
+#comments-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#comments-section ul li {
+  margin-bottom: 10px;
+}
