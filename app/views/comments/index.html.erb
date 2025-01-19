@@ -10,8 +10,11 @@
   <% end %>
   <%= stylesheet_link_tag 'comments', media: 'all' %>
 </head>
+
 <body>
-  
+  <div class="document-actions" style="text-align: right; margin: 10px;">
+    <%= link_to '編集', edit_document_path(@document), class: 'edit-button' %>
+  </div>
   <table>
   <tr>
     <th>受領日</th>
