@@ -19,6 +19,13 @@ class CommentsController < ApplicationController
 
   private
 
+  def set_document
+    @document = Document.find(params[:document_id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = '対象のドキュメントが見つかりませんでした。'
+    redirect_to documents_path
+  end
+
   def comment_params
     params.require(:comment).permit(:content)
   end
