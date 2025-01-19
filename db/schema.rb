@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_19_195909) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_19_200231) do
   create_table "comments", charset: "utf8", force: :cascade do |t|
-    t.string "text", null: false
     t.bigint "user_id", null: false
     t.bigint "document_id", null: false
     t.datetime "created_at", null: false
