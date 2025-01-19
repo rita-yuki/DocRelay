@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <h1>書類詳細・コメント一覧</h1>
+<h2>書類詳細</h2>
+  <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% elsif flash[:alert] %>
+    <p class="flash-alert"><%= flash[:alert] %></p>
+  <% end %>
+  <%= stylesheet_link_tag 'comments', media: 'all' %>
+</head>
+<body>
+  
+  <table>
+  <tr>
+    <th>受領日</th>
+    <td><%= @document.received_date %></td>
+  </tr>
+  <tr>
+    <th>手続き開始可能日</th>
+    <td><%= @document.start_date %></td>
+  </tr>
+  <tr>
+    <th>手続き期日</th>
+    <td><%= @document.due_date %></td>
+  </tr>
+  <tr>
+    <th>書類名</th>
+    <td><%= @document.document_name.name %></td>
+  </tr>
+  <tr>
+    <th>件数</th>
+    <td><%= @document.quantity.value %></td>
+  </tr>
+  <tr>
+    <th>担当者名</th>
+    <td><%= @document.user.user_name %></td>
+  </tr>
+</table>
+
+<h2>コメント</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>コメント</th>
+        <th>投稿日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.user.user_name %></td>
+          <td><%= comment.content %></td>
+          <td><%= l(comment.created_at, format: :long) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to '戻る', documents_path, class: 'back-link' %>
+  <h2>コメントを投稿する</h2>
+  <%= form_with model: [@document, @document.comments.new], local: true do |form| %>
+    <div>
+      <%= form.label :content, 'コメント内容' %><br>
+      <%= form.text_area :content, rows: 4, required: true %>
+    </div>
+    <div>
+      <%= form.submit '投稿する', class: 'submit-button' %>
+    </div>
+  <% end %>
+</body>
+</html>

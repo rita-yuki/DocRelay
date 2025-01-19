@@ -4,7 +4,7 @@ class Document < ApplicationRecord
   belongs_to_active_hash :quantity
   belongs_to_active_hash :progress_status
   belongs_to :user
-
+  has_many :comments, dependent: :destroy
   validates :received_date, :start_date, :due_date, :customer_name, presence: true
   validate :start_date_and_due_date_validations
 

@@ -41,3 +41,7 @@ class DocumentsController < ApplicationController
     params.require(:document).permit(:received_date, :start_date, :due_date, :customer_name, :document_name_id, :quantity_id)
   end
 end
+
+def show
+  @document = Document.find(params[:id])
+end

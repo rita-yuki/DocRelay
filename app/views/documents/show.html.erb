@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>書類詳細</title>
+  <%= stylesheet_link_tag 'documents', media: 'all' %>
+</head>
+<body>
+  <h1>書類詳細</h1>
+  <table class="details-table">
+    <tr>
+      <th>受領日</th>
+      <td><%= @document.received_date %></td>
+    </tr>
+    <tr>
+      <th>手続き開始日</th>
+      <td><%= @document.start_date %></td>
+    </tr>
+    <tr>
+      <th>手続き期日</th>
+      <td><%= @document.due_date %></td>
+    </tr>
+    <tr>
+      <th>顧客名</th>
+      <td><%= @document.customer_name %></td>
+    </tr>
+    <tr>
+      <th>書類名</th>
+      <td><%= @document.document_name.name %></td>
+    </tr>
+    <tr>
+      <th>件数</th>
+      <td><%= @document.quantity.value %></td>
+    </tr>
+    <tr>
+      <th>登録担当者</th>
+      <td><%= @document.user.name %></td>
+    </tr>
+    <tr>
+      <th>登録時間</th>
+      <td><%= @document.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+    </tr>
+  </table>
