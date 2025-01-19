@@ -35,6 +35,10 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def edit
+    @document = Document.find(params[:id])
+  end
+
   private
 
   def document_params
