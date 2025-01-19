@@ -39,6 +39,16 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
   end
 
+  def update
+    @document = Document.find(params[:id])
+  
+    if @document.update(document_params)
+      redirect_to document_comments_path(@document), notice: '書類が変更されました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def document_params
