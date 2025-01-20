@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :documents, only: [:index, :new, :create] do
+  resources :documents, only: [:index, :new, :create, :edit, :update] do
     resources :comments, only: [:index, :create, :destroy]
   end
 

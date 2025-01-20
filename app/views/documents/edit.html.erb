@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @document, local: true do |f| %>
+<%= form_with model: @document, url: document_path(@document), method: :patch,　local: true do |f| %>
   <div>
     <%= f.label :start_date, '手続き開始可能日' %>
     <%= f.date_field :start_date %>
