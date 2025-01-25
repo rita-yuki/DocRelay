@@ -54,8 +54,18 @@ class DocumentsController < ApplicationController
   def document_params
     params.require(:document).permit(:received_date, :start_date, :due_date, :customer_name, :document_name_id, :quantity_id)
   end
-end
 
-def show
+  def show
   @document = Document.find(params[:id])
+  end
+
+  def destroy
+    @document = Document.find(params[:id])
+
+    if @document.destroy
+      redirect_to documents_path, notice: '書類が削除されました。'
+    else
+      redirect_to documents_path, alert: '書類の削除に失敗しました。'
+    end
+  end
 end
