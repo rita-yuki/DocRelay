@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <th>書類名</th>
-      <td><%= @document.document_name.name %></td>
+      <td><%= @document.document_name&.name || "未設定" %></td>
     </tr>
     <tr>
       <th>件数</th>
@@ -33,7 +33,7 @@
     </tr>
     <tr>
       <th>登録担当者</th>
-      <td><%= @document.user.name %></td>
+      <td><%= @document.user.user_name %></td>
     </tr>
     <tr>
       <th>登録時間</th>
