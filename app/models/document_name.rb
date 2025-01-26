@@ -1,7 +1,8 @@
 class DocumentName < ActiveHash::Base
   include ActiveHash::Associations
+
   has_many :documents
-  validates :name, presence: true
+
   self.data = [
     { id: 1, name: '契約書' },
     { id: 2, name: '同意書' },
