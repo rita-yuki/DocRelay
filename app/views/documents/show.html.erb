@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <div class="document-actions" style="text-align: right; margin: 10px;">
+    <%= link_to '編集', edit_document_path(@document), class: 'btn btn-primary', style: 'margin-right: 5px;' %>
+    <%= link_to '削除', document_path(@document), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+  </div>
   <title>書類詳細</title>
-  <%= stylesheet_link_tag 'documents', media: 'all' %>
+    <%= stylesheet_link_tag 'documents', media: 'all' %>
 </head>
 <body>
   <h1>書類詳細</h1>

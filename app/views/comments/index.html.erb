@@ -13,8 +13,7 @@
 
 <body>
   <div class="document-actions" style="text-align: right; margin: 10px;">
-    <%= link_to '編集', edit_document_path(@document), class: 'btn btn-primary', style: 'margin-right: 5px;' %>
-    <%= link_to '削除', document_path(@document), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    <%= link_to '書類詳細', document_path(@document), class: 'btn btn-secondary' %>
   </div>
   <table>
   <tr>
