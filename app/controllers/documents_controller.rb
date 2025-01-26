@@ -4,6 +4,10 @@ class DocumentsController < ApplicationController
     @documents = Document.where.not(progress_status_id: processed_status_id).order(:due_date)
   end
 
+  def show
+    @document = Document.find(params[:id]) 
+  end
+
   def new
     @document = Document.new(
       received_date: params[:received_date] || Date.today,
@@ -49,23 +53,20 @@ class DocumentsController < ApplicationController
     end
   end
 
-  private
-
-  def document_params
-    params.require(:document).permit(:received_date, :start_date, :due_date, :customer_name, :document_name_id, :quantity_id)
-  end
-
-  def show
-  @document = Document.find(params[:id])
-  end
-
   def destroy
     @document = Document.find(params[:id])
 
     if @document.destroy
       redirect_to documents_path, notice: '書類が削除されました。'
     else
+      Rails.logger.error(@document.errors.full_messages)
       redirect_to documents_path, alert: '書類の削除に失敗しました。'
     end
+  end
+
+  private
+
+  def document_params
+    params.require(:document).permit(:received_date, :start_date, :due_date, :customer_name, :document_name_id, :quantity_id)
   end
 end
