@@ -3,11 +3,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :documents, only: [:index, :new, :create, :edit, :update, :destroy] do
+  resources :documents do
     resources :comments, only: [:index, :create, :destroy]
   end
 
   get 'users/edit', to: 'users#edit', as: 'edit_user'
   patch 'users', to: 'users#update', as: 'user'
   root "home#index"
-end
+end                                                                                                                           
