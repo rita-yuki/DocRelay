@@ -6,7 +6,7 @@ class Document < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :received_date, :start_date, :due_date, :customer_name, :user_id, presence: true
-
+  validates :document_name_id, presence: true
   validate :start_date_and_due_date_validations
 
   private
@@ -15,5 +15,9 @@ class Document < ApplicationRecord
     if start_date.present? && due_date.present? && start_date > due_date
       errors.add(:start_date, '手続き日を確認してください。')
     end
+  end
+
+  def document_params
+    params.require(:document).permit(:received_date, :start_date, :due_date, :customer_name, :document_name_id, :quantity_id).transform_values { |v| v.blank? ? nil : v }
   end
 end
