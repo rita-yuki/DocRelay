@@ -70,3 +70,28 @@ h1 {
 #comments-section ul li {
   margin-bottom: 10px;
 }
+
+.document-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 10px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
