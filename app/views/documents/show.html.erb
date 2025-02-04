@@ -1,6 +1,6 @@
 <div class="document-actions" style="display: flex; justify-content: flex-end; gap: 10px; width: 100%; margin: 10px;">
   <%= link_to '編集', edit_document_path(@document), class: 'btn btn-primary' %>
-  <%= link_to '削除', document_path(@document), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+  <%= link_to '削除', document_path(@document), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
 </div>
 
   <title>書類詳細</title>

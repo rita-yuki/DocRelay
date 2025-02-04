@@ -2,6 +2,6 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-// @rails/ujsのインポートを修正
+// Rails UJS のインポート（importmap 版）
 import Rails from "@rails/ujs";
 Rails.start();
