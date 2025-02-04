@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
+<div class="document-actions" style="display: flex; justify-content: flex-end; gap: 10px; width: 100%; margin: 10px;">
+  <%= link_to '編集', edit_document_path(@document), class: 'btn btn-primary' %>
+  <%= link_to '削除', document_path(@document), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+</div>
+
   <title>書類詳細</title>
-  <%= stylesheet_link_tag 'documents', media: 'all' %>
+    <%= stylesheet_link_tag 'documents', media: 'all' %>
 </head>
 <body>
   <h1>書類詳細</h1>
@@ -25,7 +27,7 @@
     </tr>
     <tr>
       <th>書類名</th>
-      <td><%= @document.document_name.name %></td>
+      <td><%= @document.document_name&.name || "未設定" %></td>
     </tr>
     <tr>
       <th>件数</th>
@@ -33,7 +35,7 @@
     </tr>
     <tr>
       <th>登録担当者</th>
-      <td><%= @document.user.name %></td>
+      <td><%= @document.user.user_name %></td>
     </tr>
     <tr>
       <th>登録時間</th>

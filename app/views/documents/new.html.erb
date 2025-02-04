@@ -45,6 +45,9 @@
   <div>
     <%= f.label :document_name_id, '書類名' %>
     <%= f.collection_select :document_name_id, DocumentName.all, :id, :name, prompt: '選択してください' %>
+    <% if @document.errors[:document_name_id].present? %>
+    <div class="error-message"><%= @document.errors[:document_name_id].first %></div>
+  <% end %>
   </div>
 
   <div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <h1>書類詳細・コメント一覧</h1>
+  <h1>コメント一覧</h1>
 <h2>書類詳細</h2>
   <% if flash[:notice] %>
     <p class="flash-notice"><%= flash[:notice] %></p>
@@ -13,7 +13,8 @@
 
 <body>
   <div class="document-actions" style="text-align: right; margin: 10px;">
-    <%= link_to '編集', edit_document_path(@document), class: 'btn btn-primary', style: 'margin-right: 5px;' %>
+    <%= link_to '書類詳細', document_path(@document), class: 'btn btn-secondary' %>
+    <%= link_to '戻る', documents_path, class: 'back-link' %>
   </div>
   <table>
   <tr>
@@ -30,7 +31,7 @@
   </tr>
   <tr>
     <th>書類名</th>
-    <td><%= @document.document_name.name %></td>
+    <td><%= @document.document_name.name || "未設定" %></td>
   </tr>
   <tr>
     <th>件数</th>
@@ -38,7 +39,7 @@
   </tr>
   <tr>
     <th>担当者名</th>
-    <td><%= @document.user.user_name %></td>
+    <td><%= @document.user&.user_name || "未設定" %></td>
   </tr>
 </table>
 
@@ -62,7 +63,6 @@
     </tbody>
   </table>
 
-  <%= link_to '戻る', documents_path, class: 'back-link' %>
   <h2>コメントを投稿する</h2>
   <%= form_with model: [@document, @document.comments.new], local: true do |form| %>
     <div>

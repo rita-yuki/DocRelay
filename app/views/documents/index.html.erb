@@ -4,6 +4,9 @@
   <title>書類一覧</title>
   <%= stylesheet_link_tag 'documents', media: 'all' %>
 </head>
+  <div class="document-actions" style="text-align: right; margin: 10px;">
+    <%= link_to '戻る', "/", class: 'back-link' %>
+  </div>
 <body>
   <h1>書類一覧</h1>
   <table class="document-table">
