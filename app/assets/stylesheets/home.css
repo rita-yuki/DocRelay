@@ -89,3 +89,11 @@ h1 {
 .menu-item {
   margin: 10px 0;
 }
+
+.footer-container {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  color: #6c757d;
+}
